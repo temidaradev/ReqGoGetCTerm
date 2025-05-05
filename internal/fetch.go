@@ -5,7 +5,7 @@ package main
 import "C"
 
 import (
-	"io/ioutil"
+	"io"
 	"net/http"
 )
 
@@ -17,7 +17,7 @@ func FetchData() *C.char {
 	}
 	defer resp.Body.Close()
 
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return C.CString("Error reading response")
 	}
