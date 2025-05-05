@@ -1,8 +1,9 @@
-// go:build cgo
+//go:build cgo
 
 package main
 
 import "C"
+
 import (
 	"io/ioutil"
 	"net/http"
@@ -10,7 +11,7 @@ import (
 
 //export FetchData
 func FetchData() *C.char {
-	resp, err := http.Get("https://api.example.com/data")
+	resp, err := http.Get("https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT")
 	if err != nil {
 		return C.CString("Error fetching data")
 	}
